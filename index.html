@@ -25,48 +25,97 @@
   --red:     #9f211b;
   --yellow:  #beb812;
   --white:   #ffffff;
+  --orange:  #c56a00;
 
-  /* ── Status chips ── */
-  --chip-easy:     #31732c;
-  --chip-moderate: #165598;
-  --chip-behavior: #beb812;
-  --chip-staff:    #9f211b;
+  /* ── Color-blind safe status (shape + color) ── */
+  --chip-easy:     #1a7a2e;
+  --chip-moderate: #0a4a8a;
+  --chip-behavior: #a07800;
+  --chip-staff:    #8a1a14;
 
-  /* ── Nav / shell ── */
-  --nav-bg:   #000000;
-  --nav-text: #ffffff;
+  /* ── Dark mode (default) ── */
+  --nav-bg:         #000000;
+  --nav-text:       #ffffff;
+  --bg:             #0a0a0a;
+  --surface:        #141414;
+  --surface-2:      #1e1e1e;
+  --surface-3:      #282828;
+  --text-primary:   #f0f0f0;
+  --text-secondary: rgba(240,240,240,0.72);
+  --text-tertiary:  rgba(240,240,240,0.45);
+  --border:         rgba(255,255,255,0.12);
+  --divider:        rgba(255,255,255,0.08);
+  --input-bg:       #1e1e1e;
+  --card-easy-bg:   linear-gradient(160deg,#0b2410,#071a09);
+  --card-mod-bg:    linear-gradient(160deg,#081a34,#051224);
+  --card-beh-bg:    linear-gradient(160deg,#262000,#1a1600);
+  --card-sta-bg:    linear-gradient(160deg,#280a08,#1c0605);
+  --card-easy-bdr:  rgba(26,122,46,0.50);
+  --card-mod-bdr:   rgba(10,74,138,0.55);
+  --card-beh-bdr:   rgba(160,120,0,0.45);
+  --card-sta-bdr:   rgba(138,26,20,0.55);
 
-  /* ── Dark surfaces ── */
-  --surface:   #111111;
-  --surface-2: #1a1a1a;
-  --surface-3: #222222;
-
-  /* ── Text ── */
-  --text-primary:   #ffffff;
-  --text-secondary: rgba(255,255,255,0.70);
-  --text-tertiary:  rgba(255,255,255,0.40);
-
-  /* ── Borders ── */
-  --border:   rgba(255,255,255,0.10);
-  --divider:  rgba(255,255,255,0.08);
-
-  /* ── Shadows (more dramatic on dark) ── */
   --shadow-sm:   0 2px 8px rgba(0,0,0,0.5);
   --shadow-md:   0 6px 24px rgba(0,0,0,0.6), 0 2px 6px rgba(0,0,0,0.4);
   --shadow-lg:   0 16px 48px rgba(0,0,0,0.7), 0 4px 12px rgba(0,0,0,0.5);
   --shadow-card: 0 8px 24px rgba(0,0,0,0.7), 0 2px 6px rgba(0,0,0,0.5);
 
   --r-pill: 999px;
-  --r-card: 6px;
-  --r-md:   10px;
+  --r-card: 8px;
+  --r-md:   12px;
   --r-lg:   18px;
+
+  /* ── Accessibility ── */
+  --focus-ring: 0 0 0 3px #165598, 0 0 0 5px rgba(22,85,152,0.4);
+  --min-touch:  48px;
+  --font-base:  1rem;
 }
+
+/* ── LIGHT MODE ── */
+body.light-mode {
+  --nav-bg:         #ffffff;
+  --nav-text:       #111111;
+  --bg:             #f4f4f6;
+  --surface:        #ffffff;
+  --surface-2:      #f0f0f2;
+  --surface-3:      #e6e6ea;
+  --text-primary:   #0f0f0f;
+  --text-secondary: rgba(15,15,15,0.72);
+  --text-tertiary:  rgba(15,15,15,0.50);
+  --border:         rgba(0,0,0,0.12);
+  --divider:        rgba(0,0,0,0.08);
+  --input-bg:       #f8f8fa;
+  --card-easy-bg:   linear-gradient(160deg,#d4f0d8,#c0e8c6);
+  --card-mod-bg:    linear-gradient(160deg,#d0e4f8,#bcd4f0);
+  --card-beh-bg:    linear-gradient(160deg,#f8f0c0,#f0e4a0);
+  --card-sta-bg:    linear-gradient(160deg,#f8d4d2,#f0c0be);
+  --card-easy-bdr:  rgba(26,122,46,0.35);
+  --card-mod-bdr:   rgba(10,74,138,0.35);
+  --card-beh-bdr:   rgba(160,120,0,0.35);
+  --card-sta-bdr:   rgba(138,26,20,0.35);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.10);
+  --shadow-md:   0 6px 24px rgba(0,0,0,0.12);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.14);
+  --shadow-card: 0 4px 16px rgba(0,0,0,0.12);
+}
+body.light-mode nav { border-bottom: 1px solid rgba(0,0,0,0.12); }
+body.light-mode .toolbar-wrap { background: linear-gradient(to bottom, #f4f4f6 80%, transparent); }
+body.light-mode .toolbar { background: #ffffff; border-color: rgba(0,0,0,0.10); }
+body.light-mode .tab-bar { border-top: 1px solid rgba(0,0,0,0.12); }
+body.light-mode .filter-chip { background: #f0f0f2; color: rgba(0,0,0,0.60); border-color: rgba(0,0,0,0.14); }
+body.light-mode .filter-chip:hover { border-color: #165598; color: #165598; }
+body.light-mode .tab-btn { color: rgba(0,0,0,0.35); }
+body.light-mode .tab-btn.active { color: #111111; }
+body.light-mode .search-wrap input { background: #f0f0f2; color: #111111; border-color: rgba(0,0,0,0.14); }
+body.light-mode .nav-date { color: #111111; }
+body.light-mode .nav-shelter-name { color: rgba(0,0,0,0.50); }
+
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
   font-family: "MuseoModerno", sans-serif;
-  background: #000000;
+  background: var(--bg);
   color: var(--text-primary);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -197,9 +246,9 @@ main {
   padding-bottom: 12px;
 }
 .toolbar {
-  background: #111111;
+  background: var(--surface);
   border-radius: var(--r-lg);
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid var(--border);
   padding: 12px 14px;
   display: flex; flex-direction: column; gap: 10px;
 }
@@ -207,11 +256,11 @@ main {
 .search-wrap input {
   width: 100%; padding: 9px 14px 9px 38px;
   border-radius: var(--r-pill);
-  background: #1a1a1a;
-  border: 1.5px solid rgba(255,255,255,0.12);
+  background: var(--input-bg);
+  border: 1.5px solid var(--border);
   font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 0.9rem;
-  color: #ffffff; outline: none;
+  color: var(--text-primary); outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 .search-wrap input:focus { border-color: #165598; box-shadow: 0 0 0 3px rgba(22,85,152,0.25); }
@@ -292,8 +341,8 @@ main {
 
 /* Color-coded card backgrounds per difficulty */
 .pin-easy .card-paper {
-  background: linear-gradient(160deg, #0e2b10 0%, #0a1f0c 100%);
-  border: 1px solid rgba(49,115,44,0.45);
+  background: var(--card-easy-bg);
+  border: 1px solid var(--card-easy-bdr);
   box-shadow:
     0 6px 20px rgba(0,0,0,0.6),
     0 2px 6px rgba(0,0,0,0.4),
@@ -301,8 +350,8 @@ main {
     inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 .pin-moderate .card-paper {
-  background: linear-gradient(160deg, #0a1e38 0%, #071628 100%);
-  border: 1px solid rgba(22,85,152,0.50);
+  background: var(--card-mod-bg);
+  border: 1px solid var(--card-mod-bdr);
   box-shadow:
     0 6px 20px rgba(0,0,0,0.6),
     0 2px 6px rgba(0,0,0,0.4),
@@ -310,8 +359,8 @@ main {
     inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 .pin-behavior .card-paper {
-  background: linear-gradient(160deg, #2a2500 0%, #1e1b00 100%);
-  border: 1px solid rgba(190,184,18,0.40);
+  background: var(--card-beh-bg);
+  border: 1px solid var(--card-beh-bdr);
   box-shadow:
     0 6px 20px rgba(0,0,0,0.6),
     0 2px 6px rgba(0,0,0,0.4),
@@ -319,8 +368,8 @@ main {
     inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 .pin-staff .card-paper {
-  background: linear-gradient(160deg, #2a0c0a 0%, #1e0806 100%);
-  border: 1px solid rgba(159,33,27,0.50);
+  background: var(--card-sta-bg);
+  border: 1px solid var(--card-sta-bdr);
   box-shadow:
     0 6px 20px rgba(0,0,0,0.6),
     0 2px 6px rgba(0,0,0,0.4),
@@ -339,54 +388,145 @@ main {
 .pin-behavior .card-paper::before { background: linear-gradient(90deg, #beb812, #d9d420); }
 .pin-staff    .card-paper::before { background: linear-gradient(90deg, #9f211b, #c42c25); }
 
-.card-main { padding: 12px 14px 10px; }
-.card-top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-.dog-name { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
-.dog-id-small { font-size: 0.65rem; color: var(--text-tertiary); margin-top: 1px; }
+.card-main { padding: 14px 14px 10px; }
 
-.status-chip {
-  padding: 3px 9px; border-radius: var(--r-pill);
-  font-size: 0.65rem; font-weight: 700; color: white;
-  letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0;
+/* ── Card row: photo thumb + info ── */
+.card-top-row {
+  display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px;
 }
+.card-thumb {
+  width: 58px; height: 58px; border-radius: 10px;
+  background: var(--surface-3);
+  border: 2px solid var(--border);
+  overflow: hidden; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-info { flex: 1; min-width: 0; }
+
+.dog-name {
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 1.18rem; font-weight: 700;
+  color: var(--text-primary); line-height: 1.2;
+  margin-bottom: 2px;
+}
+.dog-id-small { font-size: 0.68rem; color: var(--text-tertiary); }
+.dog-breed {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.80rem; color: var(--text-secondary);
+  margin-top: 3px; line-height: 1.3;
+}
+
+/* ── Color-blind safe status chip (shape + color + label) ── */
+.status-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 11px; border-radius: var(--r-pill);
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.68rem; font-weight: 700; color: white;
+  letter-spacing: 0.04em; flex-shrink: 0;
+  margin-top: 4px;
+}
+.status-chip .chip-shape {
+  width: 10px; height: 10px; flex-shrink: 0;
+}
+/* Easy: circle (green) */
 .sc-easy     { background: var(--chip-easy); }
+.sc-easy .chip-shape { border-radius: 50%; background: rgba(255,255,255,0.7); }
+/* Moderate: square (blue) */
 .sc-moderate { background: var(--chip-moderate); }
-.sc-behavior { background: var(--chip-behavior); }
+.sc-moderate .chip-shape { border-radius: 2px; background: rgba(255,255,255,0.7); }
+/* Behavior: triangle (amber) */
+.sc-behavior { background: var(--chip-behavior); color: #1a1600; }
+.sc-behavior .chip-shape { width: 0; height: 0; background: none;
+  border-left: 5px solid transparent; border-right: 5px solid transparent;
+  border-bottom: 10px solid rgba(0,0,0,0.4); }
+/* Staff: X (red) */
 .sc-staff    { background: var(--chip-staff); }
+.sc-staff .chip-shape { background: none; position: relative; }
+.sc-staff .chip-shape::before, .sc-staff .chip-shape::after {
+  content: ''; position: absolute; top: 4px; left: 0;
+  width: 10px; height: 2px; background: rgba(255,255,255,0.8);
+  border-radius: 1px;
+}
+.sc-staff .chip-shape::before { transform: rotate(45deg); }
+.sc-staff .chip-shape::after  { transform: rotate(-45deg); }
 
-.dog-breed { font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.3; }
-
-.card-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+/* ── Card chips ── */
+.card-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
 .card-chip {
-  padding: 2px 8px; border-radius: var(--r-pill);
-  font-size: 0.65rem; font-weight: 700;
-  background: #222222; color: var(--text-secondary);
+  padding: 3px 9px; border-radius: var(--r-pill);
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.68rem; font-weight: 700;
+  background: var(--surface-3); color: var(--text-secondary);
   border: 1px solid var(--divider);
 }
-.cc-hw+  { background: rgba(217,107,24,0.12); color: #B05010; border-color: rgba(217,107,24,0.3); }
-.cc-nocat{ background: rgba(197,48,48,0.10);  color: #A02020; border-color: rgba(197,48,48,0.25); }
-.cc-meds { background: rgba(22,85,152,0.20); color: #551A80; border-color: rgba(102,45,145,0.25); }
-.cc-good { background: rgba(62,155,79,0.12);  color: #226035; border-color: rgba(62,155,79,0.3); }
+.cc-hw   { background: rgba(197,106,0,0.18); color: #d07010; border-color: rgba(197,106,0,0.35); }
+.cc-nocat{ background: rgba(138,26,20,0.18); color: #c04040; border-color: rgba(138,26,20,0.35); }
+.cc-meds { background: rgba(10,74,138,0.22); color: #4488cc; border-color: rgba(10,74,138,0.40); }
+.cc-good { background: rgba(26,122,46,0.18); color: #44aa55; border-color: rgba(26,122,46,0.35); }
 
-.card-divider { height: 1px; background: var(--divider); margin: 0 14px; }
-
-.card-footer { padding: 8px 14px; }
-.walk-status { display: flex; align-items: center; gap: 6px; }
-.walk-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+/* ── Urgency bar ── */
+.urgency-bar-wrap {
+  margin: 0 14px 10px;
+  height: 6px;
+  background: var(--surface-3);
+  border-radius: 3px;
+  overflow: hidden;
 }
-.wd-green  { background: var(--green); }
-.wd-orange { background: var(--orange); }
-.wd-red    { background: var(--red); }
-.wd-gray   { background: #B0A8C0; }
-.walk-time-text { font-size: 0.72rem; color: var(--text-secondary); font-weight: 700; }
+.urgency-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+.ub-green  { background: linear-gradient(90deg, #1a7a2e, #2ea84a); }
+.ub-orange { background: linear-gradient(90deg, #a06000, #d08000); }
+.ub-red    { background: linear-gradient(90deg, #8a1a14, #cc2a22); }
+.ub-gray   { background: rgba(255,255,255,0.15); }
+
+.card-divider { height: 1px; background: var(--divider); }
+
+/* ── Card footer with walk button ── */
+.card-footer { padding: 10px 14px 12px; }
+.walk-status { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
+.walk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.wd-green  { background: #2ea84a; box-shadow: 0 0 6px rgba(46,168,74,0.5); }
+.wd-orange { background: #d08000; box-shadow: 0 0 6px rgba(208,128,0,0.5); }
+.wd-red    { background: #cc2a22; box-shadow: 0 0 6px rgba(204,42,34,0.6); }
+.wd-gray   { background: rgba(255,255,255,0.25); }
+.walk-time-text {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.80rem; color: var(--text-secondary); font-weight: 700; flex: 1;
+}
 .alert-badge {
-  margin-left: auto;
-  font-size: 0.65rem; font-weight: 700;
-  background: rgba(197,48,48,0.12); color: var(--red);
-  border: 1px solid rgba(197,48,48,0.3);
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.66rem; font-weight: 700;
+  background: rgba(138,26,20,0.18); color: #ee4444;
+  border: 1px solid rgba(138,26,20,0.40);
   border-radius: var(--r-pill);
-  padding: 2px 7px;
+  padding: 3px 8px;
+}
+
+/* ── Big Start Walk button on card ── */
+.card-walk-btn {
+  width: 100%;
+  min-height: 46px;
+  border-radius: var(--r-pill);
+  border: none; cursor: pointer;
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.92rem; font-weight: 700;
+  color: white; letter-spacing: 0.03em;
+  background: linear-gradient(180deg, #2ea84a, #1a7a2e);
+  box-shadow: 0 4px 14px rgba(26,122,46,0.40);
+  transition: transform 0.12s, filter 0.12s;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+}
+.card-walk-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.card-walk-btn.already-walked {
+  background: var(--surface-3);
+  color: var(--text-tertiary);
+  box-shadow: none;
+  font-size: 0.82rem;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1091,13 +1231,127 @@ main {
 ═══════════════════════════════════════════════════ */
 .toast {
   position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
-  z-index: 1000; padding: 11px 22px; border-radius: var(--r-pill);
-  font-size: 0.88rem; font-weight: 700; color: white;
-  background: var(--nav-bg);
-  box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,0.1);
+  z-index: 1000; padding: 12px 24px; border-radius: var(--r-pill);
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.92rem; font-weight: 700; color: white;
+  background: #165598;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
   opacity: 0; pointer-events: none; transition: opacity 0.25s; white-space: nowrap;
 }
 .toast.show { opacity: 1; }
+
+/* ════════════════════════════════════════════════════
+   ACCESSIBILITY & GLOBAL IMPROVEMENTS
+════════════════════════════════════════════════════ */
+
+/* Focus rings for keyboard users */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Minimum touch targets */
+button, .tab-btn, .filter-chip, .opt-btn, .leash-btn,
+.quick-chip, .urgency-btn, .card-walk-btn, .enrich-card {
+  min-height: var(--min-touch);
+}
+.filter-chip { min-height: 40px; padding: 8px 16px; }
+.tab-btn { min-height: 56px; }
+
+/* Bigger base font throughout */
+body { font-size: var(--font-base); }
+.ptab { font-size: 0.85rem; min-height: 46px; }
+.form-label { font-size: 0.82rem; }
+.form-select, .notes-area, .med-textarea, .staff-msg-input {
+  font-size: 1rem;
+  min-height: 48px;
+}
+.notes-area, .med-textarea { min-height: 100px; }
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute; top: -100px; left: 16px;
+  background: #165598; color: white;
+  padding: 10px 18px; border-radius: var(--r-pill);
+  font-weight: 700; z-index: 9999;
+  transition: top 0.15s;
+}
+.skip-link:focus { top: 80px; }
+
+/* ── Accessibility toggle button ── */
+.a11y-bar {
+  position: fixed; top: 66px; right: 12px; z-index: 190;
+  display: flex; gap: 8px; align-items: center;
+}
+.a11y-btn {
+  min-height: 36px; min-width: 36px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  padding: 6px 12px;
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.72rem; font-weight: 500;
+  transition: background 0.15s;
+}
+.a11y-btn:hover { background: var(--surface-3); color: var(--text-primary); }
+
+/* ── Leaderboard ── */
+.leaderboard-wrap {
+  margin-top: 6px;
+}
+.lb-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 12px;
+  margin-bottom: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.lb-row:first-child {
+  background: linear-gradient(135deg, #2a2000, #1e1600);
+  border-color: rgba(190,184,18,0.40);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+.lb-rank {
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 1.1rem; font-weight: 800;
+  width: 32px; text-align: center; flex-shrink: 0;
+  color: var(--text-tertiary);
+}
+.lb-row:first-child .lb-rank { color: #d4b800; font-size: 1.3rem; }
+.lb-row:nth-child(2) .lb-rank { color: #a0a0b0; }
+.lb-row:nth-child(3) .lb-rank { color: #a06030; }
+.lb-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, #165598, #2472cc);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 1rem; font-weight: 700; color: white; flex-shrink: 0;
+}
+.lb-info { flex: 1; min-width: 0; }
+.lb-name {
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.92rem; font-weight: 700; color: var(--text-primary);
+}
+.lb-count {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.75rem; color: var(--text-tertiary); margin-top: 1px;
+}
+.lb-walks {
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 1.3rem; font-weight: 800; color: #2ea84a;
+}
+
+/* ── Card grid responsive ── */
+@media (max-width: 480px) {
+  .corkboard { grid-template-columns: 1fr; }
+}
+@media (min-width: 481px) and (max-width: 800px) {
+  .corkboard { grid-template-columns: repeat(2, 1fr); }
+}
+
 
 /* ═══════════════════════════════════════════════════
    RESPONSIVE
@@ -1216,6 +1470,7 @@ main {
 
 <div class="corkboard-bg"></div>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 <!-- ═══ STATUS BAR ═══ -->
 <nav>
   <div class="nav-left">
@@ -1230,6 +1485,12 @@ main {
 
 
 
+<!-- ═══ ACCESSIBILITY BAR ═══ -->
+<div class="a11y-bar" role="toolbar" aria-label="Accessibility controls">
+  <button class="a11y-btn" id="themeToggle" aria-label="Toggle light/dark mode">☀️ Light</button>
+  <button class="a11y-btn" id="fontToggle" aria-label="Toggle larger text">🔡 Bigger</button>
+</div>
+
 <!-- ═══ LOADING SCREEN ═══ -->
 <div id="loadingState">
   <img class="loading-gif" src="https://res.cloudinary.com/dlti4v7v2/image/upload/v1773457550/Black_White_Square_Interior_Designer_Logo_h5edxp.gif" alt="Loading...">
@@ -1237,7 +1498,7 @@ main {
 </div>
 
 <!-- ═══ MAIN ═══ -->
-<main id="mainShift">
+<main id="main-content">
 
   <!-- ─── DOGS TAB ─── -->
   <div class="tab-content active" id="tab-dogs">
@@ -1309,8 +1570,11 @@ main {
 
       <div class="stats-section-title">📊 Today's Overview</div>
       <div class="stat-grid-big" id="statGridBig"></div>
-      <div class="stats-section-title">⏰ Needs a Walk</div>
-      <div class="not-walked-list" id="notWalkedList"></div>
+      <div class="stats-section-title" role="heading" aria-level="2">⏰ Needs a Walk</div>
+      <div class="not-walked-list" id="notWalkedList" role="list" aria-label="Dogs that need walks"></div>
+
+      <div class="stats-section-title" role="heading" aria-level="2" style="margin-top:20px;">🏆 Today's Leaderboard</div>
+      <div class="leaderboard-wrap" id="leaderboardList" role="list" aria-label="Volunteer walk leaderboard"></div>
     </div>
   </div>
 
@@ -1318,15 +1582,15 @@ main {
 
 <!-- ═══ BOTTOM TAB BAR ═══ -->
 <div class="tab-bar">
-  <button class="tab-btn active" data-tab="dogs">
-    <span class="tab-icon">🐕</span>Dogs
+  <button class="tab-btn active" data-tab="dogs" role="tab" aria-selected="true" aria-controls="tab-dogs">
+    <span class="tab-icon" aria-hidden="true">🐕</span>Dogs
   </button>
-  <button class="tab-btn" data-tab="wall">
-    <span class="tab-icon">📣</span>Wall
+  <button class="tab-btn" data-tab="wall" role="tab" aria-selected="false" aria-controls="tab-wall">
+    <span class="tab-icon" aria-hidden="true">📣</span>Wall
     <span class="tab-badge" id="wallBadge" style="display:none">0</span>
   </button>
-  <button class="tab-btn" data-tab="stats">
-    <span class="tab-icon">🪪</span>My Profile
+  <button class="tab-btn" data-tab="stats" role="tab" aria-selected="false" aria-controls="tab-stats">
+    <span class="tab-icon" aria-hidden="true">🪪</span>My Profile
     <span class="tab-badge" id="alertBadge" style="display:none">0</span>
   </button>
 </div>
@@ -1745,10 +2009,10 @@ function getDifficulty(d) {
   return "easy";
 }
 var CHIP_CFG = {
-  easy:     { label: "🟢 Easy",          cls: "sc-easy" },
-  moderate: { label: "🔵 Moderate",      cls: "sc-moderate" },
-  behavior: { label: "🟠 Behavior Plan", cls: "sc-behavior" },
-  staff:    { label: "🔴 Staff Only",    cls: "sc-staff" }
+  easy:     { label: "Easy",         cls: "sc-easy",     shape: "●", ariaLabel: "Easy - suitable for all volunteers" },
+  moderate: { label: "Moderate",     cls: "sc-moderate", shape: "■", ariaLabel: "Moderate - some experience helpful" },
+  behavior: { label: "Behavior Plan",cls: "sc-behavior", shape: "▲", ariaLabel: "Behavior Plan - follow notes carefully" },
+  staff:    { label: "Staff Only",   cls: "sc-staff",    shape: "✕", ariaLabel: "Staff Only - do not walk without staff" }
 };
 
 /* ─── WALKS ─── */
@@ -1922,81 +2186,183 @@ function renderStats(dogs) {
 
 
 
+function buildLeaderboard() {
+  var walks = getWalks(), today = todayKey();
+  // Tally walks by volunteer name from walk logs
+  var tally = {};
+  Object.keys(walks).forEach(function(id) {
+    walks[id].forEach(function(w) {
+      if (w.date !== today) return;
+      var vol = w.vol || "Unknown";
+      tally[vol] = (tally[vol] || 0) + 1;
+    });
+  });
+  // Add current volunteer
+  var myName = getVolName();
+  // Sort
+  var sorted = Object.keys(tally).map(function(n){ return { name: n, count: tally[n] }; })
+    .sort(function(a,b){ return b.count - a.count; });
+  // If no data seed with placeholder
+  if (!sorted.length) {
+    sorted = [
+      { name: myName !== 'Volunteer' ? myName : 'You', count: 0 },
+      { name: 'Team',    count: 0 },
+    ];
+  }
+  var medals = ['🥇','🥈','🥉'];
+  return sorted.slice(0,5).map(function(v, i) {
+    var isMe = v.name === myName;
+    return "<div class='lb-row' " + (isMe ? "style='border-color:rgba(22,85,152,0.55)'" : "") + ">" +
+      "<div class='lb-rank'>" + (medals[i] || (i+1)) + "</div>" +
+      "<div class='lb-avatar'>" + v.name.charAt(0).toUpperCase() + "</div>" +
+      "<div class='lb-info'><div class='lb-name'>" + v.name + (isMe ? " (You)" : "") + "</div>" +
+        "<div class='lb-count'>walks today</div></div>" +
+      "<div class='lb-walks'>" + v.count + "</div>" +
+    "</div>";
+  }).join("");
+}
+
 function renderStatsTab() {
   var walks = getWalks(), today = todayKey();
   var walkedCount = DOGS.filter(function(d){ return (walks[d.id]||[]).some(function(w){ return w.date===today; }); }).length;
-  var notWalked = DOGS.filter(function(d){ return !(walks[d.id]||[]).some(function(w){ return w.date===today; }); });
+  var notWalked = DOGS.filter(function(d){ return !(walks[d.id]||[]).some(function(w){ return w.date===today; }); })
+    .sort(function(a,b){ return (getLastWalkTime(a.id)||0) - (getLastWalkTime(b.id)||0); });
+
   document.getElementById("statGridBig").innerHTML =
-    "<div class='stat-big-card'><div class='stat-big-num'>"+walkedCount+"</div><div class='stat-big-label'>Dogs Walked Today</div></div>" +
-    "<div class='stat-big-card'><div class='stat-big-num'>"+notWalked.length+"</div><div class='stat-big-label'>Still Need Walk</div></div>" +
+    "<div class='stat-big-card'><div class='stat-big-num'>"+walkedCount+"</div><div class='stat-big-label'>Walked Today</div></div>" +
+    "<div class='stat-big-card'><div class='stat-big-num'>"+notWalked.length+"</div><div class='stat-big-label'>Need Walk</div></div>" +
     "<div class='stat-big-card'><div class='stat-big-num'>"+(DOGS.filter(function(d){return d.status==="Available for Adoption";}).length)+"</div><div class='stat-big-label'>Adoptable</div></div>" +
     "<div class='stat-big-card'><div class='stat-big-num'>"+DOGS.length+"</div><div class='stat-big-label'>Total Dogs</div></div>";
-  
-  var nwHtml = notWalked.slice(0,20).map(function(d){
-    var ws = walkStatusInfo(d.id);
-    return "<div class='nw-dog-row'>" +
-      "<div class='nw-indicator " + ws.dot + "'></div>" +
+
+  var nwHtml = notWalked.slice(0,15).map(function(d){
+    var ui = urgencyInfo(d.id);
+    return "<div class='nw-dog-row' role='listitem'>" +
+      "<div class='nw-indicator " + ui.dot + "' aria-hidden='true'></div>" +
       "<div class='nw-name'>" + d.name + "</div>" +
-      "<div class='nw-time'>" + ws.text + "</div>" +
+      "<div class='nw-time'>" + ui.label + "</div>" +
       "</div>";
   }).join("");
-  document.getElementById("notWalkedList").innerHTML = nwHtml || "<div style='color:rgba(237,232,245,0.5);padding:20px;text-align:center'>All dogs have been walked! 🎉</div>";
+  document.getElementById("notWalkedList").innerHTML = nwHtml ||
+    "<div style='color:var(--text-tertiary);padding:20px;text-align:center;font-size:1rem;'>🎉 All dogs have been walked!</div>";
+
+  var lbEl = document.getElementById("leaderboardList");
+  if (lbEl) lbEl.innerHTML = buildLeaderboard();
+}
+
+/* ─── URGENCY INFO ─── */
+function urgencyInfo(id) {
+  var tw = getTodayWalk(id);
+  if (tw) return { pct:100, cls:'ub-green',  dot:'wd-green',  label:'Walked today ✓',              alert:false, walked:true  };
+  var last = getLastWalkTime(id);
+  if (!last) return { pct:100, cls:'ub-red', dot:'wd-red',    label:'Never walked — needs walk!',  alert:true,  walked:false };
+  var hrs = (Date.now() - last) / 3600000;
+  if (hrs > 8)  return { pct:Math.min(100,Math.round((hrs/12)*100)), cls:'ub-red',    dot:'wd-red',    label:'Last walked '+timeAgo(last)+' — urgent!', alert:true,  walked:false };
+  if (hrs > 4)  return { pct:Math.round((hrs/12)*100),               cls:'ub-orange', dot:'wd-orange', label:'Last walked '+timeAgo(last),              alert:false, walked:false };
+  return          { pct:Math.round((hrs/12)*100),                     cls:'ub-green',  dot:'wd-green',  label:'Last walked '+timeAgo(last),              alert:false, walked:false };
 }
 
 function renderDogs() {
-  var board = document.getElementById("corkboard");
-  var dogs  = filtered();
+  var board  = document.getElementById("corkboard");
+  var photos = get(KEYS.photos);
+
+  // Auto-sort: unwalked urgent first, then by last walk, walked last
+  var dogs   = filtered();
+  var today  = todayKey();
+  var walks  = getWalks();
+  dogs.sort(function(a, b) {
+    var wa = (walks[a.id]||[]).some(function(w){ return w.date===today; });
+    var wb = (walks[b.id]||[]).some(function(w){ return w.date===today; });
+    if (wa !== wb) return wa ? 1 : -1;
+    return (getLastWalkTime(a.id)||0) - (getLastWalkTime(b.id)||0);
+  });
+
   renderStats(dogs);
   renderStatsTab();
   board.innerHTML = "";
+
   if (!dogs.length) {
-    board.innerHTML = "<div style='grid-column:1/-1;text-align:center;padding:40px;color:rgba(255,255,240,0.6);font-size:1rem;'>No dogs match your search.</div>";
+    board.innerHTML = "<div role='status' style='grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-tertiary);font-size:1rem;'>No dogs match your search.</div>";
     return;
   }
-  dogs.forEach(function(d, i) {
-    var diff = getDifficulty(d);
-    var chip = CHIP_CFG[diff];
-    var ws   = walkStatusInfo(d.id);
-    var rot  = cardRotation(d.id);
 
-    var chipHtml = "<div class='card-chips'>";
-    if (d.hw_positive)      chipHtml += "<span class='card-chip cc-hw'>HW+</span>";
-    if (d.hw_negative)      chipHtml += "<span class='card-chip'>HW-</span>";
-    if (d.no_cats)          chipHtml += "<span class='card-chip cc-nocat'>No Cats</span>";
-    if (d.behavior_meds)    chipHtml += "<span class='card-chip cc-meds'>Behavior Meds</span>";
-    if (d.good_with_dogs)   chipHtml += "<span class='card-chip cc-good'>Good w/ Dogs</span>";
-    if (d.housetrained)     chipHtml += "<span class='card-chip cc-good'>Housetrained</span>";
+  dogs.forEach(function(d, i) {
+    var diff      = getDifficulty(d);
+    var chip      = CHIP_CFG[diff];
+    var ui        = urgencyInfo(d.id);
+    var dogPhotos = photos[d.id] || [];
+    var breed2    = (d.breed2 && d.breed2 !== d.breed && d.breed2 !== "Mix") ? " / " + d.breed2 : "";
+
+    var thumbHtml = dogPhotos.length
+      ? "<div class='card-thumb'><img src='" + dogPhotos[0].dataUrl + "' alt='Photo of " + d.name + "'></div>"
+      : "<div class='card-thumb' aria-hidden='true'>🐕</div>";
+
+    var chipHtml = "<div class='card-chips' aria-label='Key attributes'>";
+    if (d.hw_positive)    chipHtml += "<span class='card-chip cc-hw'   title='Heartworm Positive'>HW+</span>";
+    if (d.no_cats)        chipHtml += "<span class='card-chip cc-nocat' title='Not good with cats'>No Cats</span>";
+    if (d.behavior_meds)  chipHtml += "<span class='card-chip cc-meds'  title='Behavior medication'>Meds</span>";
+    if (d.good_with_dogs) chipHtml += "<span class='card-chip cc-good'  title='Good with dogs'>✓ Dogs</span>";
+    if (d.housetrained)   chipHtml += "<span class='card-chip cc-good'  title='Housetrained'>✓ House</span>";
     chipHtml += "</div>";
 
-    var alertBadge = ws.alert ? "<span class='alert-badge'>⚠ Needs Walk</span>" : "";
+    var walkBtnLabel = ui.walked ? "✓ Walked Today" : "🦮 Start Walk";
+    var walkBtnCls   = ui.walked ? "card-walk-btn already-walked" : "card-walk-btn";
 
     var wrap = document.createElement("div");
     wrap.className = "pin-card pin-" + diff;
-    wrap.style.animationDelay = (i * 25) + "ms";
+    wrap.style.animationDelay = (i * 20) + "ms";
     wrap.setAttribute("data-id", d.id);
+    wrap.setAttribute("role", "article");
+    wrap.setAttribute("aria-label", d.name + ", " + chip.ariaLabel + ", " + ui.label);
+    wrap.setAttribute("tabindex", "0");
 
     wrap.innerHTML =
-      "<div class='pushpin'><div class='pin-head'></div><div class='pin-shaft'></div></div>" +
-      "<div class='card-paper' style='transform:rotate("+rot+"deg)'>" +
+      "<div class='card-paper'>" +
         "<div class='card-main'>" +
           "<div class='card-top-row'>" +
-            "<div><div class='dog-name'>" + d.name + "</div><div class='dog-id-small'>" + d.id + "</div></div>" +
-            "<span class='status-chip " + chip.cls + "'>" + shortLoc(d.location) + "</span>" +
+            thumbHtml +
+            "<div class='card-info'>" +
+              "<div class='dog-name'>" + d.name + "</div>" +
+              "<div class='dog-id-small'>" + d.id + "</div>" +
+              "<div class='dog-breed'>" + d.breed + breed2 + " · " + d.sex + "</div>" +
+              "<span class='status-chip " + chip.cls + "' aria-label='" + chip.ariaLabel + "'>" +
+                "<span class='chip-shape' aria-hidden='true'></span>" + shortLoc(d.location) +
+              "</span>" +
+            "</div>" +
           "</div>" +
-          "<div class='dog-breed'>" + d.breed + (d.breed2 && d.breed2 !== d.breed && d.breed2 !== "Mix" ? " / " + d.breed2 : "") + " &middot; " + d.sex + "</div>" +
           chipHtml +
+        "</div>" +
+        "<div class='urgency-bar-wrap' role='progressbar' aria-label='Walk urgency' aria-valuenow='" + ui.pct + "' aria-valuemin='0' aria-valuemax='100'>" +
+          "<div class='urgency-bar-fill " + ui.cls + "' style='width:" + ui.pct + "%'></div>" +
         "</div>" +
         "<div class='card-divider'></div>" +
         "<div class='card-footer'>" +
           "<div class='walk-status'>" +
-            "<div class='walk-dot " + ws.dot + "'></div>" +
-            "<div class='walk-time-text'>" + ws.text + "</div>" +
-            alertBadge +
+            "<div class='walk-dot " + ui.dot + "' aria-hidden='true'></div>" +
+            "<div class='walk-time-text'>" + ui.label + "</div>" +
           "</div>" +
+          "<button class='" + walkBtnCls + "' data-id='" + d.id + "' aria-label='" + (ui.walked ? 'Already walked ' : 'Start walk for ') + d.name + "'>" +
+            walkBtnLabel +
+          "</button>" +
         "</div>" +
       "</div>";
 
-    wrap.addEventListener("click", function() { openProfile(this.getAttribute("data-id")); });
+    wrap.addEventListener("click", function(e) {
+      if (e.target.closest(".card-walk-btn")) return;
+      openProfile(this.getAttribute("data-id"));
+    });
+    wrap.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProfile(this.getAttribute("data-id")); }
+    });
+    wrap.querySelector(".card-walk-btn").addEventListener("click", function(e) {
+      e.stopPropagation();
+      var did = this.getAttribute("data-id");
+      openProfile(did);
+      setTimeout(function() {
+        var wt = document.querySelector(".ptab[data-tab='walk']");
+        if (wt) wt.click();
+      }, 150);
+    });
+
     board.appendChild(wrap);
   });
 }
@@ -2615,6 +2981,43 @@ document.addEventListener("DOMContentLoaded", function() {
   var profileEditBtn = document.getElementById("profileEditBtn");
   if (profileEditBtn) profileEditBtn.addEventListener("click", function() {
     promptVolName();
+  });
+
+  // ── THEME TOGGLE ──
+  var themeBtn = document.getElementById("themeToggle");
+  var fontBtn  = document.getElementById("fontToggle");
+  var bigFont  = localStorage.getItem("kynnel_bigfont") === "1";
+  var lightMode = localStorage.getItem("kynnel_lightmode") === "1";
+
+  function applyTheme() {
+    if (lightMode) {
+      document.body.classList.add("light-mode");
+      themeBtn.textContent = "🌙 Dark";
+      themeBtn.setAttribute("aria-label", "Switch to dark mode");
+    } else {
+      document.body.classList.remove("light-mode");
+      themeBtn.textContent = "☀️ Light";
+      themeBtn.setAttribute("aria-label", "Switch to light mode");
+    }
+  }
+  function applyFont() {
+    document.documentElement.style.setProperty("--font-base", bigFont ? "1.15rem" : "1rem");
+    fontBtn.textContent = bigFont ? "🔡 Normal" : "🔡 Bigger";
+    fontBtn.setAttribute("aria-label", bigFont ? "Switch to normal text size" : "Switch to larger text");
+  }
+  applyTheme();
+  applyFont();
+
+  if (themeBtn) themeBtn.addEventListener("click", function() {
+    lightMode = !lightMode;
+    localStorage.setItem("kynnel_lightmode", lightMode ? "1" : "0");
+    applyTheme();
+    toast(lightMode ? "☀️ Light mode on" : "🌙 Dark mode on");
+  });
+  if (fontBtn) fontBtn.addEventListener("click", function() {
+    bigFont = !bigFont;
+    localStorage.setItem("kynnel_bigfont", bigFont ? "1" : "0");
+    applyFont();
   });
 
   function promptVolName() {
