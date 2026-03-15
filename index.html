@@ -317,11 +317,15 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   background: #000000;
-  height: 62px;
+  /* Push content below the device status bar using safe-area-inset */
+  padding-top: env(safe-area-inset-top, 0px);
+  height: calc(62px + env(safe-area-inset-top, 0px));
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: 0 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: 8px;
   border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 .nav-left {
@@ -371,7 +375,8 @@ nav {
   background: #000000;
   border-top: 1px solid rgba(255,255,255,0.10);
   display: flex;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .tab-btn {
   flex: 1; display: flex; flex-direction: column;
@@ -425,8 +430,8 @@ body.light-mode .tab-btn.active .tab-icon-img {
 ═══════════════════════════════════════════════════ */
 main {
   position: relative; z-index: 1;
-  padding-top: 62px;
-  padding-bottom: 64px;
+  padding-top: calc(62px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
   min-height: 100vh;
 }
 .tab-content { display: none; }
@@ -438,7 +443,7 @@ main {
 .toolbar-wrap {
   padding: 12px 16px 0;
   position: sticky;
-  top: 62px;
+  top: calc(62px + env(safe-area-inset-top, 0px));
   z-index: 100;
   background: linear-gradient(to bottom, #000000 80%, transparent);
   padding-bottom: 12px;
@@ -450,6 +455,35 @@ main {
   padding: 12px 14px;
   display: flex; flex-direction: column; gap: 10px;
 }
+/* Species toggle */
+.species-toggle {
+  display: flex; gap: 0;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  padding: 3px;
+  align-self: flex-start;
+  margin: 0 auto 4px;
+  border: 1px solid var(--border);
+}
+.species-btn {
+  flex: 1; padding: 7px 22px;
+  border-radius: var(--r-pill);
+  border: none; cursor: pointer;
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-tertiary);
+  background: none;
+  transition: all 0.18s;
+  white-space: nowrap;
+  min-height: 36px;
+}
+.species-btn.active {
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.species-btn.active.dogs { border-bottom: 2px solid #165598; }
+.species-btn.active.cats { border-bottom: 2px solid #beb812; }
 .search-wrap { position: relative; }
 .search-wrap input {
   width: 100%; padding: 9px 14px 9px 38px;
@@ -1611,8 +1645,7 @@ body { font-size: var(--font-base); }
 
 /* ── Accessibility toggle button ── */
 .a11y-bar {
-  position: fixed; top: 66px; right: 12px; z-index: 190;
-  display: flex; gap: 8px; align-items: center;
+  display: none; /* moved into My Profile tab */
 }
 .a11y-btn {
   min-height: 36px; min-width: 36px;
@@ -1628,6 +1661,45 @@ body { font-size: var(--font-base); }
   transition: background 0.15s;
 }
 .a11y-btn:hover { background: var(--surface-3); color: var(--text-primary); }
+
+/* ── Accessibility settings card ── */
+.a11y-settings-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.a11y-setting-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  padding: 14px 16px;
+}
+.a11y-setting-info { flex: 1; min-width: 0; }
+.a11y-setting-label {
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.95rem; font-weight: 600; color: var(--text-primary);
+}
+.a11y-setting-desc {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.75rem; color: var(--text-tertiary); margin-top: 2px;
+}
+.a11y-setting-divider {
+  height: 1px; background: var(--divider); margin: 0 16px;
+}
+.a11y-toggle-btn {
+  min-height: 40px; padding: 8px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  color: var(--text-secondary);
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.a11y-toggle-btn:hover { background: #165598; color: white; border-color: #165598; }
 
 /* ── Leaderboard ── */
 .leaderboard-wrap {
@@ -1797,6 +1869,18 @@ body { font-size: var(--font-base); }
   width: 180px; height: 180px;
   object-fit: contain;
 }
+.home-dedication {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.20);
+  text-align: center;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  display: block;
+}
+body.light-mode .home-dedication { color: rgba(0,0,0,0.18); }
+
 .loading-text {
   font-family: "MuseoModerno", sans-serif;
   font-size: 0.88rem; font-weight: 300;
@@ -1955,6 +2039,11 @@ body { font-size: var(--font-base); }
     </div>
 
     <div class="toolbar-wrap">
+      <!-- Species toggle -->
+      <div class="species-toggle" role="group" aria-label="Select species">
+        <button class="species-btn dogs active" data-species="dogs" aria-pressed="true">🐕 Dogs</button>
+        <button class="species-btn cats" data-species="cats" aria-pressed="false">🐱 Cats</button>
+      </div>
       <div class="toolbar">
         <div class="search-wrap">
           <span class="search-icon">🔍</span>
@@ -2013,8 +2102,31 @@ body { font-size: var(--font-base); }
 
       <div class="stats-section-title" role="heading" aria-level="2" style="margin-top:20px;">🏆 Today's Leaderboard</div>
       <div class="leaderboard-wrap" id="leaderboardList" role="list" aria-label="Volunteer walk leaderboard"></div>
+
+      <!-- Accessibility settings -->
+      <div class="stats-section-title" role="heading" aria-level="2" style="margin-top:24px;">⚙️ Display Settings</div>
+      <div class="a11y-settings-card">
+        <div class="a11y-setting-row">
+          <div class="a11y-setting-info">
+            <div class="a11y-setting-label">Dark / Light Mode</div>
+            <div class="a11y-setting-desc">Switch between dark and light theme</div>
+          </div>
+          <button class="a11y-toggle-btn" id="themeToggle" aria-label="Toggle light/dark mode">☀️ Light</button>
+        </div>
+        <div class="a11y-setting-divider"></div>
+        <div class="a11y-setting-row">
+          <div class="a11y-setting-info">
+            <div class="a11y-setting-label">Larger Text</div>
+            <div class="a11y-setting-desc">Increase font size throughout the app</div>
+          </div>
+          <button class="a11y-toggle-btn" id="fontToggle" aria-label="Toggle larger text">🔡 Bigger</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- ─── HOME TAB FOOTER ─── -->
+  <div class="home-dedication" aria-hidden="true">Made with ❤️ for Otis &amp; Dusty</div>
 
   <!-- ─── MESSAGES TAB ─── -->
   <div class="tab-content" id="tab-messages">
@@ -3537,6 +3649,49 @@ document.addEventListener("DOMContentLoaded", function() {
   if (profileEditBtn) profileEditBtn.addEventListener("click", function() {
     promptVolName();
   });
+
+  // ── SPECIES TOGGLE ──
+  var curSpecies = "dogs";
+  document.querySelectorAll(".species-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      curSpecies = this.getAttribute("data-species");
+      document.querySelectorAll(".species-btn").forEach(function(b) {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      this.classList.add("active");
+      this.setAttribute("aria-pressed", "true");
+      if (curSpecies === "cats") {
+        showCatPlaceholder();
+      } else {
+        hideCatPlaceholder();
+        renderDogs();
+      }
+    });
+  });
+
+  function showCatPlaceholder() {
+    var board = document.getElementById("corkboard");
+    var qotd  = document.querySelector(".qotd-wrap");
+    if (qotd) qotd.style.display = "none";
+    board.innerHTML =
+      "<div style='grid-column:1/-1;text-align:center;padding:60px 24px;'>" +
+        "<div style='font-size:4rem;margin-bottom:16px;'>🐱</div>" +
+        "<div style='font-family:MuseoModerno,sans-serif;font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;'>Cat Residents</div>" +
+        "<div style='font-family:Atkinson Hyperlegible,sans-serif;font-size:0.92rem;color:var(--text-secondary);line-height:1.6;max-width:280px;margin:0 auto 24px;'>" +
+          "Cat data will appear here once the shelter adds cats to the roster in the Google Sheet." +
+        "</div>" +
+        "<div style='display:inline-flex;align-items:center;gap:8px;padding:10px 20px;" +
+          "border-radius:999px;background:linear-gradient(135deg,#2a2500,#1e1b00);" +
+          "border:1px solid rgba(190,184,18,0.40);font-family:MuseoModerno,sans-serif;" +
+          "font-size:0.82rem;font-weight:600;color:#d4c010;'>🐾 Coming Soon</div>" +
+      "</div>";
+  }
+
+  function hideCatPlaceholder() {
+    var qotd = document.querySelector(".qotd-wrap");
+    if (qotd) qotd.style.display = "";
+  }
 
   // ── THEME TOGGLE ──
   var themeBtn = document.getElementById("themeToggle");
