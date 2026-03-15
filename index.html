@@ -317,7 +317,6 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   background: #000000;
-  /* Push content below the device status bar using safe-area-inset */
   padding-top: env(safe-area-inset-top, 0px);
   height: calc(62px + env(safe-area-inset-top, 0px));
   display: flex;
@@ -326,7 +325,9 @@ nav {
   padding-left: 18px;
   padding-right: 18px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  border-bottom: none;
+  border-radius: 0 0 22px 22px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .nav-left {
   display: flex; align-items: center;
@@ -470,12 +471,12 @@ main {
   border-radius: var(--r-pill);
   border: none; cursor: pointer;
   font-family: "MuseoModerno", sans-serif;
-  font-size: 0.78rem; font-weight: 600;
+  font-size: 0.92rem; font-weight: 600;
   color: var(--text-tertiary);
   background: none;
   transition: all 0.18s;
   white-space: nowrap;
-  min-height: 36px;
+  min-height: 40px;
 }
 .species-btn.active {
   background: var(--surface);
@@ -571,42 +572,22 @@ main {
   position: relative;
 }
 
-/* Color-coded card backgrounds per difficulty */
-.pin-easy .card-paper {
-  background: var(--card-easy-bg);
-  border: 1px solid var(--card-easy-bdr);
-  box-shadow:
-    0 6px 20px rgba(0,0,0,0.6),
-    0 2px 6px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(100,200,90,0.12),
-    inset 0 -1px 0 rgba(0,0,0,0.3);
-}
-.pin-moderate .card-paper {
-  background: var(--card-mod-bg);
-  border: 1px solid var(--card-mod-bdr);
-  box-shadow:
-    0 6px 20px rgba(0,0,0,0.6),
-    0 2px 6px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(80,150,255,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.3);
-}
-.pin-behavior .card-paper {
-  background: var(--card-beh-bg);
-  border: 1px solid var(--card-beh-bdr);
-  box-shadow:
-    0 6px 20px rgba(0,0,0,0.6),
-    0 2px 6px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(220,210,50,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.3);
-}
+/* All cards: neutral dark body, color only on the top stripe */
+.pin-easy .card-paper,
+.pin-moderate .card-paper,
+.pin-behavior .card-paper,
 .pin-staff .card-paper {
-  background: var(--card-sta-bg);
-  border: 1px solid var(--card-sta-bdr);
-  box-shadow:
-    0 6px 20px rgba(0,0,0,0.6),
-    0 2px 6px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,80,70,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+}
+body.light-mode .pin-easy .card-paper,
+body.light-mode .pin-moderate .card-paper,
+body.light-mode .pin-behavior .card-paper,
+body.light-mode .pin-staff .card-paper {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
 /* Colored header stripe */
@@ -739,10 +720,10 @@ main {
   padding: 3px 8px;
 }
 
-/* ── Big Start Walk button on card ── */
+/* ── Card walk button + active timer ── */
 .card-walk-btn {
   width: 100%;
-  min-height: 46px;
+  min-height: 48px;
   border-radius: var(--r-pill);
   border: none; cursor: pointer;
   font-family: "MuseoModerno", sans-serif;
@@ -759,7 +740,36 @@ main {
   color: var(--text-tertiary);
   box-shadow: none;
   font-size: 0.82rem;
+  cursor: default;
 }
+/* Active walk row: timer display + stop button */
+.card-walk-active {
+  display: flex; gap: 8px; align-items: center;
+}
+.card-walk-timer {
+  flex: 1; min-height: 48px;
+  border-radius: var(--r-pill);
+  background: rgba(26,122,46,0.15);
+  border: 1.5px solid rgba(26,122,46,0.50);
+  display: flex; align-items: center; justify-content: center;
+  font-family: "MuseoModerno", sans-serif;
+  font-size: 1.05rem; font-weight: 700;
+  color: #2ea84a; letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.card-walk-stop {
+  min-height: 48px; min-width: 48px;
+  border-radius: var(--r-pill);
+  border: none; cursor: pointer;
+  background: linear-gradient(180deg, #cc2a22, #8a1a14);
+  color: white; font-size: 0.78rem; font-weight: 700;
+  font-family: "MuseoModerno", sans-serif;
+  padding: 0 16px;
+  box-shadow: 0 4px 12px rgba(138,26,20,0.40);
+  transition: filter 0.12s;
+  flex-shrink: 0;
+}
+.card-walk-stop:hover { filter: brightness(1.1); }
 
 /* ═══════════════════════════════════════════════════
    PROFILE OVERLAY
@@ -2041,8 +2051,8 @@ body.light-mode .home-dedication { color: rgba(0,0,0,0.18); }
     <div class="toolbar-wrap">
       <!-- Species toggle -->
       <div class="species-toggle" role="group" aria-label="Select species">
-        <button class="species-btn dogs active" data-species="dogs" aria-pressed="true">🐕 Dogs</button>
-        <button class="species-btn cats" data-species="cats" aria-pressed="false">🐱 Cats</button>
+        <button class="species-btn dogs active" data-species="dogs" aria-pressed="true">Dogs</button>
+        <button class="species-btn cats" data-species="cats" aria-pressed="false">Cats</button>
       </div>
       <div class="toolbar">
         <div class="search-wrap">
@@ -2059,7 +2069,6 @@ body.light-mode .home-dedication { color: rgba(0,0,0,0.18); }
         </div>
       </div>
     </div>
-    <div class="stats-bar" id="statsBar"></div>
     <div class="corkboard" id="corkboard"></div>
   </div>
 
@@ -2556,6 +2565,105 @@ var curFilter = "all";
 var curDog    = null;
 var curPTab   = "info";
 var timerSec  = 0, timerRunning = false, timerIv = null;
+
+/* ─── PER-CARD WALK TIMERS ─── */
+var cardWalks = {}; // { dogId: { sec, iv, startTs } }
+
+function startCardWalk(cardWrap, dogId, dogName) {
+  // Stop any other active card walk first
+  Object.keys(cardWalks).forEach(function(id) {
+    if (id !== dogId) stopCardWalk(id, false);
+  });
+
+  var footer = cardWrap.querySelector(".card-footer");
+  var sec    = 0;
+  var startTs = Date.now();
+
+  // Replace button with timer row
+  footer.querySelector(".walk-status").style.display = "none";
+  var oldBtn = footer.querySelector(".card-walk-btn");
+  if (oldBtn) oldBtn.style.display = "none";
+
+  var timerRow = document.createElement("div");
+  timerRow.className = "card-walk-active";
+  timerRow.setAttribute("data-walk-dog", dogId);
+  timerRow.innerHTML =
+    "<div class='card-walk-timer' id='cwt-" + dogId + "'>00:00</div>" +
+    "<button class='card-walk-stop' data-stop-id='" + dogId + "'>Stop</button>";
+  footer.appendChild(timerRow);
+
+  // Tick
+  var iv = setInterval(function() {
+    sec++;
+    var el = document.getElementById("cwt-" + dogId);
+    if (el) {
+      var m = Math.floor(sec / 60), s = sec % 60;
+      el.textContent = pad2(m) + ":" + pad2(s);
+    } else {
+      clearInterval(iv);
+    }
+  }, 1000);
+
+  cardWalks[dogId] = { sec: 0, iv: iv, startTs: startTs, row: timerRow };
+
+  // Stop button listener
+  timerRow.querySelector(".card-walk-stop").addEventListener("click", function(e) {
+    e.stopPropagation();
+    stopCardWalk(dogId, true);
+  });
+
+  // Send SW notification
+  if ("serviceWorker" in navigator && navigator.serviceWorker.controller && Notification.permission === "granted") {
+    navigator.serviceWorker.controller.postMessage({
+      type: "WALK_STARTED", dogName: dogName, dogId: dogId, startTs: startTs
+    });
+  }
+
+  toast("Walk started with " + dogName + "!");
+}
+
+function stopCardWalk(dogId, logWalk) {
+  var cw = cardWalks[dogId];
+  if (!cw) return;
+  clearInterval(cw.iv);
+
+  // Remove timer row, restore button UI
+  if (cw.row && cw.row.parentNode) cw.row.parentNode.removeChild(cw.row);
+
+  // Find the card and restore it
+  var card = document.querySelector(".pin-card[data-id='" + dogId + "']");
+  if (card) {
+    var ws = card.querySelector(".walk-status");
+    var btn = card.querySelector(".card-walk-btn");
+    if (ws) ws.style.display = "";
+    if (btn) btn.style.display = "";
+  }
+
+  delete cardWalks[dogId];
+
+  // Tell SW to clear notification
+  if ("serviceWorker" in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: "WALK_ENDED" });
+  }
+
+  if (logWalk) {
+    // Auto-open profile to save the walk
+    var dog = DOGS.find(function(d){ return d.id === dogId; });
+    if (dog) {
+      openProfile(dogId);
+      setTimeout(function() {
+        var wt = document.querySelector(".ptab[data-tab='walk']");
+        if (wt) wt.click();
+        // Pre-fill timer with walked duration
+        timerSec = Math.floor((Date.now() - cw.startTs) / 1000);
+        updateTimerDisplay();
+      }, 150);
+    }
+    toast("Walk stopped — save your notes!");
+  }
+}
+
+function pad2(n) { return String(n).padStart(2, "0"); }
 var selMood   = "", selLeash = "";
 var selUrgency = "";
 var newWallCount = 0;
@@ -2757,14 +2865,7 @@ function filtered() {
 }
 
 function renderStats(dogs) {
-  var walks = getWalks(), today = todayKey();
-  var walked = dogs.filter(function(d){ return (walks[d.id]||[]).some(function(w){ return w.date===today; }); }).length;
-  var avail  = dogs.filter(function(d){ return d.status === "Available for Adoption"; }).length;
-  document.getElementById("statsBar").innerHTML =
-    "<div class='stat-card'><span class='stat-num'>"+dogs.length+"</span>&nbsp;dogs</div>" +
-    "<div class='stat-card'><span class='stat-num'>"+walked+"</span>&nbsp;walked</div>" +
-    "<div class='stat-card'><span class='stat-num'>"+(dogs.length-walked)+"</span>&nbsp;need walk</div>" +
-    "<div class='stat-card'><span class='stat-num'>"+avail+"</span>&nbsp;adoptable</div>";
+  // Stats bar removed — data shown in My Profile tab instead
 }
 
 
@@ -2887,7 +2988,7 @@ function renderDogs() {
     if (d.housetrained)   chipHtml += "<span class='card-chip cc-good'  title='Housetrained'>✓ House</span>";
     chipHtml += "</div>";
 
-    var walkBtnLabel = ui.walked ? "✓ Walked Today" : "🦮 Start Walk";
+    var walkBtnLabel = ui.walked ? "✓ Walked Today" : "Start Walk";
     var walkBtnCls   = ui.walked ? "card-walk-btn already-walked" : "card-walk-btn";
 
     var wrap = document.createElement("div");
@@ -2936,15 +3037,14 @@ function renderDogs() {
     wrap.addEventListener("keydown", function(e) {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProfile(this.getAttribute("data-id")); }
     });
-    wrap.querySelector(".card-walk-btn").addEventListener("click", function(e) {
-      e.stopPropagation();
-      var did = this.getAttribute("data-id");
-      openProfile(did);
-      setTimeout(function() {
-        var wt = document.querySelector(".ptab[data-tab='walk']");
-        if (wt) wt.click();
-      }, 150);
-    });
+    (function(cardWrap, dogId, dogName) {
+      var btn = cardWrap.querySelector(".card-walk-btn");
+      if (!btn || btn.classList.contains("already-walked")) return;
+      btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        startCardWalk(cardWrap, dogId, dogName);
+      });
+    })(wrap, d.id, d.name);
 
     board.appendChild(wrap);
   });
@@ -3672,8 +3772,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function showCatPlaceholder() {
     var board = document.getElementById("corkboard");
-    var qotd  = document.querySelector(".qotd-wrap");
-    if (qotd) qotd.style.display = "none";
+    // Keep qotd and welcome visible for cats too
     board.innerHTML =
       "<div style='grid-column:1/-1;text-align:center;padding:60px 24px;'>" +
         "<div style='font-size:4rem;margin-bottom:16px;'>🐱</div>" +
@@ -3689,8 +3788,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function hideCatPlaceholder() {
-    var qotd = document.querySelector(".qotd-wrap");
-    if (qotd) qotd.style.display = "";
+    // qotd always visible now, nothing to restore
   }
 
   // ── THEME TOGGLE ──
