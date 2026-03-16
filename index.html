@@ -2367,7 +2367,6 @@ html.light-mode-early body { background: #f4f4f6 !important; }
     <div class="qotd-wrap">
       <div class="welcome-row">
         <div class="welcome-text" id="welcomeText">Welcome back, <span id="welcomeName">Volunteer</span> 👋</div>
-        <div class="welcome-date-chip" id="welcomeDate"></div>
       </div>
       <div class="qotd-card" id="qotdCard">
         <div class="qotd-label">🐾 Quote of the Day</div>
@@ -4303,7 +4302,6 @@ document.addEventListener("DOMContentLoaded", function() {
   (function updateWelcome() {
     var nameEl = document.getElementById("welcomeName");
     var textEl = document.getElementById("welcomeText");
-    var dateEl = document.getElementById("welcomeDate");
     var vName  = getVolName();
     var name   = (vName && vName !== "Volunteer") ? vName : "Volunteer";
     if (nameEl) nameEl.textContent = name;
@@ -4336,10 +4334,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (textEl) {
       textEl.innerHTML = greeting + "<span id='welcomeName'>" + name + "</span> 👋";
     }
-    if (dateEl) {
-      var d = new Date();
-      dateEl.textContent = d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
-    }
+    // Date shown in nav bar only
   })();
 
   // Double-click shelter name to set volunteer name
@@ -4619,15 +4614,15 @@ document.addEventListener("DOMContentLoaded", function() {
   // ══════════════════════════════════════════
   // SHELTER INFO MODAL
   // ══════════════════════════════════════════
-  function openShelterModal() {
+  window.openShelterModal = function() {
     var m = document.getElementById("shelterModal");
     m.classList.add("open");
     document.body.style.overflow = "hidden";
-  }
-  function closeShelterModal() {
+  };
+  window.closeShelterModal = function() {
     document.getElementById("shelterModal").classList.remove("open");
     document.body.style.overflow = "";
-  }
+  };
   document.getElementById("shelterModal").addEventListener("click", function(e) {
     if (e.target === this) closeShelterModal();
   });
@@ -4697,23 +4692,23 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("calEventsList").innerHTML = evHtml || "<div style='color:var(--text-tertiary);padding:16px 0;font-size:0.88rem;'>No upcoming events.</div>";
   }
 
-  function calChangeMonth(dir) {
+  window.calChangeMonth = function(dir) {
     calMonth += dir;
     if (calMonth > 11) { calMonth = 0; calYear++; }
     if (calMonth < 0)  { calMonth = 11; calYear--; }
     renderCalendar();
-  }
+  };
 
-  function openCalendarModal() {
+  window.openCalendarModal = function() {
     renderCalendar();
     var m = document.getElementById("calendarModal");
     m.classList.add("open");
     document.body.style.overflow = "hidden";
-  }
-  function closeCalendarModal() {
+  };
+  window.closeCalendarModal = function() {
     document.getElementById("calendarModal").classList.remove("open");
     document.body.style.overflow = "";
-  }
+  };
   document.getElementById("calendarModal").addEventListener("click", function(e) {
     if (e.target === this) closeCalendarModal();
   });
